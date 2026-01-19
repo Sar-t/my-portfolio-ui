@@ -3,7 +3,7 @@
 ================================ */
 
 const BASE_API = import.meta.env.PROD
-    ? "https://my-portfolio-api-312u.onrender.com"
+    ? "https://my-portfolio-api-312u.onrender.com/me-api"
     : "/api";
 
 /* Helper to handle responses */
