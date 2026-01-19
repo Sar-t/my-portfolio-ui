@@ -2,7 +2,9 @@
    BASE CONFIG
 ================================ */
 
-const BASE_API = "/api";
+const BASE_API = import.meta.env.PROD
+    ? "https://my-portfolio-api-312u.onrender.com"
+    : "/api";
 
 /* Helper to handle responses */
 const handleResponse = async (res) => {
@@ -18,7 +20,7 @@ const handleResponse = async (res) => {
 ================================ */
 
 export const getHealth = async () => {
-  const res = await fetch("/api/health");
+  const res = await fetch(`${BASE_API}/health`);
   if (!res.ok) throw new Error("Server unreachable");
   return res.json(); // health endpoint usually returns plain JSON
 };
@@ -112,12 +114,12 @@ export const updateWork = async (id, payload) => {
 // ---------- Certificates ----------
 
 export const getCertificates = async () => {
-  const res = await fetch("/api/certificates");
+  const res = await fetch(`${BASE_API}/certificates`);
   return handleResponse(res);
 };
 
 export const createCertificate = async (payload) => {
-  const res = await fetch("/api/certificates", {
+  const res = await fetch(`${BASE_API}/certificates`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -126,7 +128,7 @@ export const createCertificate = async (payload) => {
 };
 
 export const updateCertificate = async (id, payload) => {
-  const res = await fetch(`/api/certificates/${id}`, {
+  const res = await fetch(`${BASE_API}/certificates/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -137,13 +139,13 @@ export const updateCertificate = async (id, payload) => {
 // ---------- skills APIs ----------
 
 export const getSkills = async () => {
-  const res = await fetch("/api/skills");
+  const res = await fetch(`${BASE_API}/skills`);
   return handleResponse(res);
 };
 
 // Top skills only (eg: top 5)
 export const getTopSkills = async () => {
-  const res = await fetch("/api/skills/top");
+  const res = await fetch(`${BASE_API}/skills/top`);
   return handleResponse(res);
 };
 /**
@@ -151,12 +153,12 @@ export const getTopSkills = async () => {
  * Useful if you want raw skills later
  */
 export const getProjectsSkills = async () => {
-  const res = await fetch("/api/projects");
+  const res = await fetch(`${BASE_API}/projects`);
   const projects = await handleResponse(res);
   return projects.flatMap((project) => project.skills || []);
 };
 export const addProfileSkill = async (skill) => {
-  const res = await fetch("/api/profile", {
+  const res = await fetch(`${BASE_API}/profile`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -186,7 +188,7 @@ export const createEducation = async (payload) => {
 };
 
 export const updateEducation = async (id, payload) => {
-  const res = await fetch(`/api/education/${id}`, {
+  const res = await fetch(`${BASE_API}/education/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
