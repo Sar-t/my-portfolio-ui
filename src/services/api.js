@@ -60,7 +60,7 @@ export const updateProfile = async (payload) => {
 export const getProjects = async (filters = {}) => {
   const query = new URLSearchParams(filters).toString();
   const res = await fetch(
-    `/api/projects${query ? `?${query}` : ""}`
+    `${BASE_API}/projects${query ? `?${query}` : ""}`
   );
   return handleResponse(res);
 };
