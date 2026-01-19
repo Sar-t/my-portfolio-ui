@@ -26,7 +26,7 @@ export default function App() {
       <div className="w-full h-[100vh] flex flex-col items-center justify-center">
         <span className="font-semibold text-[50px]">Hello, I am</span>
         <span className="font-semibold text-[70px]">{profile.name}!</span>
-        <span className="font-normal text-[50px]">{profile.profileDescription}</span>
+        <span className="font-normal text-[30px]">{profile.profileDescription}</span>
       </div>
       <hr />
       {/* Education section */}
