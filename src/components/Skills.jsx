@@ -130,9 +130,6 @@ function Skills() {
                 <span className="text-lg capitalize">
                   {item.skill}
                 </span>
-                <span className="text-sm opacity-70">
-                  ({item.count})
-                </span>
               </div>
             ))}
           </div>
