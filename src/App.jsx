@@ -1,18 +1,16 @@
 // App.jsx
 import { useEffect, useState } from "react";
-import Health from "./components/ServerStatus";
 import Profile from "./components/Profile";
 import Projects from "./components/Projects";
 import { getProfile } from "./services/api";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
-import ServerStatus from "./components/ServerStatus";
 import Certificates from "./components/Certificates";
 
-export default function App() {
+export function App() {
   const [profile, setProfile] = useState(null);
 
-  useEffect(() => {
+  seEffect(() => {
     getProfile().then(res => setProfile(res));
   }, []);
 
@@ -39,5 +37,6 @@ export default function App() {
       <hr />
       <Certificates />
     </div>
+    <div></div>
   );
 }
